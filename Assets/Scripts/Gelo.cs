@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
-public class Fogo : MonoBehaviour
+public class Gelo : MonoBehaviour
 {
-    public float speed = 20f;
+    public float speed = 10f;
 
-    static public float dano = 15f;
+    static public float dano = 20f;
 
     private SpriteRenderer sRplayer;
 
@@ -18,7 +17,7 @@ public class Fogo : MonoBehaviour
     void Start()
     {
         
-        player = GameObject.FindGameObjectWithTag("P1");
+        player = GameObject.FindGameObjectWithTag("P2");
 
         sRplayer = player.GetComponent<SpriteRenderer>();
 
@@ -42,11 +41,11 @@ public class Fogo : MonoBehaviour
     {
         if (flipped)
         {
-            transform.position += -transform.right * speed * Time.deltaTime;
+            transform.position += transform.right * speed * Time.deltaTime;
         }
         else
         {
-            transform.position += transform.right * speed * Time.deltaTime;
+            transform.position += -transform.right * speed * Time.deltaTime;
         }
     }
 

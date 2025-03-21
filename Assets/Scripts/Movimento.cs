@@ -6,53 +6,97 @@ using UnityEngine;
 public class Movimento : MonoBehaviour
 {
     public float speed = 2.5f;
+
     public float jump = 3;
+
     private float vida = 100;
-    
+
+    private Rigidbody2D rB;
+
+    private SpriteRenderer sR;
+
+    private float xAxis1;
+    private float xAxis2;
+
+    public GameObject offset;
+
+    static public bool isShooting;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        isShooting = false;
+        rB = GetComponent<Rigidbody2D>();
+        sR = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Movement();     
+    }
 
-        if (gameObject.CompareTag("P1"))
+    void Movement()
+    {
+        if (gameObject.CompareTag("P1") && !Turnos.playerTurn)
         {
+            xAxis1 = Input.GetAxis("P1");
+
+            if (xAxis1 < 0)
+            {
+                sR.flipX = true;
+            }
+            else if (xAxis1 > 0)
+            {
+                sR.flipX = false;
+            }
             
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (!isShooting)
             {
-                transform.Translate(new Vector2(speed * Time.deltaTime, 0));
-                transform.localScale = new Vector2(1.9112f, 1.5467f);
-            }
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                transform.Translate(new Vector2(-speed * Time.deltaTime, 0));
-                transform.localScale = new Vector2(-1.9112f, 1.5467f);
+                if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    transform.Translate(new Vector2(speed * Time.deltaTime, 0));
+
+                }
+                if (Input.GetKey(KeyCode.LeftArrow))
+                {
+                    transform.Translate(new Vector2(-speed * Time.deltaTime, 0));
+
+                }
             }
         }
-        else if (gameObject.CompareTag("P2"))
+        else if (gameObject.CompareTag("P2") && Turnos.playerTurn)
         {
-            if (Input.GetKey(KeyCode.D))
+            xAxis2 = Input.GetAxis("P2");
+
+            if (xAxis2 < 0)
             {
-                transform.Translate(new Vector2(speed * Time.deltaTime, 0));
+                sR.flipX = false;
             }
-            if (Input.GetKey(KeyCode.A))
+            else if (xAxis2 > 0)
             {
-                transform.Translate(new Vector2(-speed * Time.deltaTime, 0));
+                sR.flipX = true;
             }
 
+            if (!isShooting)
+            {
+
+                if (Input.GetKey(KeyCode.D))
+                {
+                    transform.Translate(new Vector2(speed * Time.deltaTime, 0));
+                }
+                if (Input.GetKey(KeyCode.A))
+                {
+                    transform.Translate(new Vector2(-speed * Time.deltaTime, 0));
+                }
+
+            }
         }
-        
-        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Fireball"))
+        if (collision.gameObject.CompareTag("Spell"))
         {
             vida -= Fogo.dano;
         }
