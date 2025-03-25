@@ -7,7 +7,7 @@ public class Fogo : MonoBehaviour
 {
     public float speed = 20f;
 
-    static public float dano = 15f;
+    static public int dano = 15;
 
     private SpriteRenderer sRplayer;
 
@@ -52,7 +52,8 @@ public class Fogo : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        Turnos.turno += 1;
+        Atirar.p1Shot = false;
         Destroy(gameObject);
     }
 }

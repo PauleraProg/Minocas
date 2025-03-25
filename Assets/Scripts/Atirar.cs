@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class Atirar : MonoBehaviour
 {
     public GameObject fireballPrefab;
-    public GameObject thunderPrefab;
+    
 
     private float xAxis;
     private float xAxis2;
@@ -78,6 +78,7 @@ public class Atirar : MonoBehaviour
         {
             if (!p1Shot && Input.GetKeyDown(KeyCode.RightControl))
             {
+                Movimento.isShooting = true;
                 if (srCast.flipX)
                 {
                     Vector2 offset = new Vector2(transform.position.x + -2, transform.position.y + 2.5f);
@@ -88,7 +89,6 @@ public class Atirar : MonoBehaviour
                     Vector2 offset = new Vector2(transform.position.x + 2, transform.position.y + 2.5f);
                     Instantiate(fireballPrefab, offset, Quaternion.identity);
                 }
-                Movimento.isShooting = true;
                 p1Shot = true;
             }
 
@@ -97,6 +97,7 @@ public class Atirar : MonoBehaviour
         {
             if (!p2Shot && Input.GetKeyDown(KeyCode.LeftControl))
             {
+                Movimento.isShooting = true;
                 if(!srCast.flipX)
                 {
                     Vector2 offset = new Vector2(transform.position.x + -2, transform.position.y + 2.5f);
@@ -107,14 +108,10 @@ public class Atirar : MonoBehaviour
                     Vector2 offset = new Vector2(transform.position.x + 2, transform.position.y + 2.5f);
                     Instantiate(fireballPrefab, offset, Quaternion.identity);
                 }
-                Movimento.isShooting = true;
                 p2Shot = true;
             }
         }
     }
 
-    void Lampago()
-    {
-         
-    }
+
 }

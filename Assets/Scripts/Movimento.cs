@@ -9,7 +9,7 @@ public class Movimento : MonoBehaviour
 
     public float jump = 3;
 
-    private float vida = 100;
+    static public int vida = 100;
 
     private Rigidbody2D rB;
 
@@ -33,6 +33,10 @@ public class Movimento : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (vida <= 0)
+        {
+            Destroy(gameObject);
+        }
         Movement();     
     }
 
@@ -100,10 +104,12 @@ public class Movimento : MonoBehaviour
         {
             vida -= Fogo.dano;
         }
-
-        if (vida <= 0)
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Spell"))
         {
-            Destroy(gameObject);
+            vida -= Raio.dano;
         }
     }
 }

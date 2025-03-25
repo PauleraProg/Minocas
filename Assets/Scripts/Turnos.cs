@@ -5,21 +5,20 @@ using UnityEngine;
 
 public class Turnos : MonoBehaviour
 {
-    static public int turno;
+    static public int turno = 1;
     static public bool playerTurn;
     private bool action;
-    
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerTurn = false;
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {           
         BulletCheck();
         if (action)
         {
@@ -28,14 +27,23 @@ public class Turnos : MonoBehaviour
         OpenFire();
     }
 
-    static public bool ManageTurn(int turno)
-    {        
+    static public bool ManageTurn(int turn)
+    {
+        if (turn % 2 == 0)
+        {
+            playerTurn = true;
+        }
+        else
+        {
+            playerTurn = false;
+        }
+
         return playerTurn;
-    }
+    } 
 
     void Action()
     {           
-            Debug.Log(turno);
+            Debug.Log(action);
             ManageTurn(turno);        
     }
 
@@ -48,10 +56,12 @@ public class Turnos : MonoBehaviour
     {
         if (!playerTurn)
         {
+            Movimento.isShooting = false;
             Atirar.p1Shot = false;
         }
         else
         {
+            Movimento.isShooting = false;
             Atirar.p2Shot = false;
         }
     }

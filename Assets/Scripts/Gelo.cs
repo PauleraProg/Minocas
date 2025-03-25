@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Gelo : MonoBehaviour
@@ -16,7 +17,6 @@ public class Gelo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         player = GameObject.FindGameObjectWithTag("P2");
 
         sRplayer = player.GetComponent<SpriteRenderer>();
@@ -35,6 +35,7 @@ public class Gelo : MonoBehaviour
     void Update()
     {
         Shoot();
+        
     }
 
     void Shoot()
@@ -51,7 +52,12 @@ public class Gelo : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        Turnos.turno += 1;
+        Atirar.p2Shot = false;
         Destroy(gameObject);
     }
+
+   
+
+
 }
