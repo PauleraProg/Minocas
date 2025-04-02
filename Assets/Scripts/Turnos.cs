@@ -25,6 +25,7 @@ public class Turnos : MonoBehaviour
             Action();
         }
         OpenFire();
+            ManageTurn(turno);        
     }
 
     static public bool ManageTurn(int turn)
@@ -43,8 +44,7 @@ public class Turnos : MonoBehaviour
 
     void Action()
     {           
-            Debug.Log(action);
-            ManageTurn(turno);        
+            Debug.Log(turno);
     }
 
     void BulletCheck()

@@ -53,7 +53,6 @@ public class Gelo : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Turnos.turno += 1;
-        Atirar.p2Shot = false;
         Destroy(gameObject);
     }
 

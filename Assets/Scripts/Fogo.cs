@@ -53,7 +53,6 @@ public class Fogo : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Turnos.turno += 1;
-        Atirar.p1Shot = false;
         Destroy(gameObject);
     }
 }

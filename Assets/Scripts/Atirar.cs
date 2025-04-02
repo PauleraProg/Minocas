@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class Atirar : MonoBehaviour
 {
     public GameObject fireballPrefab;
-    
+    public GameObject lghtPrefab;
 
     private float xAxis;
     private float xAxis2;
@@ -16,6 +16,7 @@ public class Atirar : MonoBehaviour
     static public bool p2Shot;
 
     private bool endTurn;
+    private bool liveSpell;
 
     //public Transform offset;
 
@@ -23,6 +24,7 @@ public class Atirar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        liveSpell = false;
         p1Shot = false;
         p2Shot = false;
         srCast = GetComponent<SpriteRenderer>();
@@ -31,26 +33,13 @@ public class Atirar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Unlock();
-        Bola();        
-    }
-
-    void Unlock()
-    {
         
-        if(p1Shot || p2Shot)
-        {
-            endTurn = GameObject.FindGameObjectWithTag("Spell");
-            
-            if (!endTurn)
-            {
-               Movimento.isShooting = false;                
-            }
+        Bola();
 
-            
-        }
+        liveSpell = GameObject.FindGameObjectWithTag("Spell");
     }
 
+    
     void Bola()
     {
         xAxis = Input.GetAxis("P1");
@@ -74,10 +63,11 @@ public class Atirar : MonoBehaviour
             srCast.flipX = false;
         }
 
-        if (gameObject.CompareTag("P1") && !Turnos.playerTurn)
+        if (!Turnos.playerTurn && gameObject.CompareTag("P1"))
         {
             if (!p1Shot && Input.GetKeyDown(KeyCode.RightControl))
             {
+                p1Shot = true;
                 Movimento.isShooting = true;
                 if (srCast.flipX)
                 {
@@ -89,14 +79,13 @@ public class Atirar : MonoBehaviour
                     Vector2 offset = new Vector2(transform.position.x + 2, transform.position.y + 2.5f);
                     Instantiate(fireballPrefab, offset, Quaternion.identity);
                 }
-                p1Shot = true;
-            }
-
+            }           
         }
-        else if (gameObject.CompareTag("P2") && Turnos.playerTurn)
+        else if (Turnos.playerTurn && gameObject.CompareTag("P2"))
         {
             if (!p2Shot && Input.GetKeyDown(KeyCode.LeftControl))
             {
+                p2Shot = true;                
                 Movimento.isShooting = true;
                 if(!srCast.flipX)
                 {
@@ -108,7 +97,20 @@ public class Atirar : MonoBehaviour
                     Vector2 offset = new Vector2(transform.position.x + 2, transform.position.y + 2.5f);
                     Instantiate(fireballPrefab, offset, Quaternion.identity);
                 }
-                p2Shot = true;
+            }
+        }
+
+        void Relampago()
+        {
+            if (!Turnos.playerTurn && gameObject.CompareTag("P1"))
+            {
+                if (!p1Shot && Input.GetKeyDown(KeyCode.LeftShift))
+                {
+                    p1Shot = true;
+                    Movimento.isShooting = true;
+
+                    
+                }
             }
         }
     }
