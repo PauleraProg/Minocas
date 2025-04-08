@@ -2,57 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+
 
 public class WheelController : MonoBehaviour
 {
-    public int id;
-    public string spellname;
-    public TextMeshProUGUI spellText;
+    public Animator anim;
+
+    private bool weaponWheelOn = false;
+
     public Image selectedSpell;
-    private bool selected;
-    public Sprite icon;
 
+    public Sprite noImage;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static int spellID;
 
     // Update is called once per frame
     void Update()
     {
-        if (selected)
+        if (Input.GetKeyDown(KeyCode.RightControl))
         {
-            selectedSpell.sprite = icon;
-            spellText.text = spellname;
+            weaponWheelOn = !weaponWheelOn;
+        }
+
+        if (weaponWheelOn)
+        {
+            anim.SetBool("OpenWeaponWheel", true);
+        }
+        else
+        {
+            anim.SetBool("OpenWeaponWheel", false);
+        }
+
+        switch (spellID)
+        {
+            case 0:
+                selectedSpell.sprite = noImage;
+                break;
         }
     }
 
-    public void Selected()
-    {
-        selected = true;
-    }
-
-    public void DeSelected()
-    {
-        selected = false;
-    }
-
-    public void HoverEnter()
-    {
-        if(selected)
-        {
-            spellText.text = spellname;
-        }
-    }
-
-    public void HoverExit()
-    {
-        if (!selected)
-        {
-            spellText.text = "";
-        }
-    }
+    
 }
