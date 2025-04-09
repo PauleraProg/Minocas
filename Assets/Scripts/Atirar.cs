@@ -8,15 +8,17 @@ public class Atirar : MonoBehaviour
     public GameObject fireballPrefab;
     public GameObject lghtPrefab;
 
-    private float xAxis;
-    private float xAxis2;
-    private SpriteRenderer srCast;
+    public static float xAxis;
+    public static float xAxis2;
+    public static SpriteRenderer srCast;
 
     static public bool p1Shot;
     static public bool p2Shot;
 
     private bool endTurn;
     private bool liveSpell;
+    [SerializeField] private WheelController wheelOn;
+
 
     //public Transform offset;
 
@@ -40,7 +42,7 @@ public class Atirar : MonoBehaviour
     }
 
     
-    void Bola()
+    public void Bola()
     {
         xAxis = Input.GetAxis("P1");
         xAxis2 = Input.GetAxis("P2");
@@ -65,7 +67,7 @@ public class Atirar : MonoBehaviour
 
         if (!Turnos.playerTurn && gameObject.CompareTag("P1"))
         {
-            if (!p1Shot && Input.GetKeyDown(KeyCode.RightControl))
+            if (wheelOn.weaponWheelOn && Input.GetKeyDown(KeyCode.RightShift))
             {
                 p1Shot = true;
                 Movimento.isShooting = true;

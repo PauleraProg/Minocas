@@ -8,11 +8,12 @@ public class WheelController : MonoBehaviour
 {
     public Animator anim;
 
-    private bool weaponWheelOn = false;
+    public bool weaponWheelOn = false;
 
     public Image selectedSpell;
 
     public Sprite noImage;
+    [SerializeField] private Atirar shoot;
 
     public static int spellID;
 
@@ -37,6 +38,9 @@ public class WheelController : MonoBehaviour
         {
             case 0:
                 selectedSpell.sprite = noImage;
+                break;
+            case 1:
+                shoot.Bola();
                 break;
         }
     }
