@@ -8,7 +8,7 @@ public class WeaponHolder : MonoBehaviour
 
     int currentIndex;
 
-    public GameObject[] spells;
+    public static GameObject[] spells;
 
     public GameObject spellHolder;
 
@@ -28,5 +28,22 @@ public class WeaponHolder : MonoBehaviour
         currentSpell = spells[0];
         currentIndex = 0;
     }
+
+    public void Fireball()
+    {
+            spells[currentIndex].SetActive(false);
+            currentIndex = 0;
+            spells[currentIndex].SetActive(true);        
+    }
+
+    public void IceCluster() 
+    {
+            spells[currentIndex].SetActive(false);
+            currentIndex = 1;
+            spells[currentIndex].SetActive(true);
+    }
+
+
+
 }
 

@@ -34,15 +34,6 @@ public class WheelController : MonoBehaviour
             anim.SetBool("OpenWeaponWheel", false);
         }
 
-        switch (spellID)
-        {
-            case 0:
-                selectedSpell.sprite = noImage;
-                break;
-            case 1:
-                shoot.Bola();
-                break;
-        }
     }
 
     
