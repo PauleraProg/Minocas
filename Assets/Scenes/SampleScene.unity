@@ -792,7 +792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ffded9c986aea041942236d5538665c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireballPrefab: {fileID: 0}
+  fireballPrefab: {fileID: 6249511084264805889, guid: c5527d303d1b5a844944e338f64154df, type: 3}
   lghtPrefab: {fileID: 0}
   wheelOn: {fileID: 0}
 --- !u!1 &103832608
@@ -4056,7 +4056,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1203283225}
-  - component: {fileID: 1203283226}
   m_Layer: 0
   m_Name: Cast
   m_TagString: Untagged
@@ -4079,20 +4078,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 103832611}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.608}
---- !u!114 &1203283226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1203283224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc26abf6f9443c04c8f7045bd3350c49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spellHolder: {fileID: 1203283224}
-  currentSpell: {fileID: 0}
 --- !u!1 &1227024764
 GameObject:
   m_ObjectHideFlags: 0
@@ -5004,11 +4989,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c3a3c30ad9b7a54ba02e1178c80ba9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spells:
+  - {fileID: 6249511084264805889, guid: 21f8da0cc813e4d4f976bece8a045a79, type: 3}
+  - {fileID: 6249511084264805889, guid: c5527d303d1b5a844944e338f64154df, type: 3}
+  currentSpell: {fileID: 0}
   anim: {fileID: 1826370198}
   weaponWheelOn: 0
   selectedSpell: {fileID: 0}
   noImage: {fileID: 0}
-  shoot: {fileID: 103832614}
 --- !u!95 &1826370198
 Animator:
   serializedVersion: 5
@@ -5393,11 +5381,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c3a3c30ad9b7a54ba02e1178c80ba9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spells: []
+  currentSpell: {fileID: 0}
   anim: {fileID: 2038879970}
   weaponWheelOn: 0
   selectedSpell: {fileID: 0}
   noImage: {fileID: 0}
-  shoot: {fileID: 0}
 --- !u!95 &2038879970
 Animator:
   serializedVersion: 5

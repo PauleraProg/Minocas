@@ -67,7 +67,7 @@ public class Atirar : MonoBehaviour
 
         if (!Turnos.playerTurn && gameObject.CompareTag("P1"))
         {
-            if (wheelOn.weaponWheelOn && Input.GetKeyDown(KeyCode.RightShift))
+            if (WheelController.spellID == 1 && Input.GetKeyDown(KeyCode.RightShift))
             {
                 p1Shot = true;
                 Movimento.isShooting = true;

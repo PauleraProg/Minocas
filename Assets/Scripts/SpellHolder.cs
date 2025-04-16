@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class WeaponHolder : MonoBehaviour
 {
-    int totalSpell = 1;
+    int totalSpell;
 
     int currentIndex;
 
-    public static GameObject[] spells;
+    public GameObject[] spells;
 
     public GameObject spellHolder;
 
@@ -29,21 +29,7 @@ public class WeaponHolder : MonoBehaviour
         currentIndex = 0;
     }
 
-    public void Fireball()
-    {
-            spells[currentIndex].SetActive(false);
-            currentIndex = 0;
-            spells[currentIndex].SetActive(true);        
-    }
-
-    public void IceCluster() 
-    {
-            spells[currentIndex].SetActive(false);
-            currentIndex = 1;
-            spells[currentIndex].SetActive(true);
-    }
-
-
+    
 
 }
 
