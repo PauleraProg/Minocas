@@ -34,13 +34,13 @@ public class ButtonController : MonoBehaviour
     public void Selected()
     {
         selected = true;
-        WheelController.spellID = ID;
+        WeaponHolder.spellID = ID;
     }
 
     public void DeSelected()
     {
         selected = false;
-        WheelController.spellID = 0;
+        WeaponHolder.spellID = 0;
     }
 
     public void HoverEnter()

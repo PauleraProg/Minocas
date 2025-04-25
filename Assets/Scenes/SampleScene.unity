@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a70a3f92750fe4e8c0dc4b6e8e54c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 3
+  ID: 2
   spellname: Thunder Strike
   spellText: {fileID: 520932889}
   selectedSpell: {fileID: 1354940237}
@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a70a3f92750fe4e8c0dc4b6e8e54c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 4
+  ID: 3
   spellname: Air Sickle
   spellText: {fileID: 520932889}
   selectedSpell: {fileID: 675614715}
@@ -794,7 +794,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireballPrefab: {fileID: 0}
   lghtPrefab: {fileID: 0}
-  wheelOn: {fileID: 0}
 --- !u!1 &103832608
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,7 +985,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireballPrefab: {fileID: 6249511084264805889, guid: 21f8da0cc813e4d4f976bece8a045a79, type: 3}
   lghtPrefab: {fileID: 0}
-  wheelOn: {fileID: 0}
 --- !u!1 &201259649
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,7 +1269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a70a3f92750fe4e8c0dc4b6e8e54c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 2
+  ID: 0
   spellname: Ice Cluster
   spellText: {fileID: 1134466888}
   selectedSpell: {fileID: 2005277957}
@@ -1759,7 +1757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a70a3f92750fe4e8c0dc4b6e8e54c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 1
+  ID: 0
   spellname: Fireball
   spellText: {fileID: 520932889}
   selectedSpell: {fileID: 557507797}
@@ -1819,7 +1817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a70a3f92750fe4e8c0dc4b6e8e54c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 1
+  ID: 0
   spellname: Fireball
   spellText: {fileID: 1134466888}
   selectedSpell: {fileID: 1946314355}
@@ -2443,7 +2441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a70a3f92750fe4e8c0dc4b6e8e54c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 5
+  ID: 0
   spellname: Landslide
   spellText: {fileID: 1134466888}
   selectedSpell: {fileID: 206655759}
@@ -2758,7 +2756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a70a3f92750fe4e8c0dc4b6e8e54c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 2
+  ID: 1
   spellname: Ice Cluster
   spellText: {fileID: 520932889}
   selectedSpell: {fileID: 1567976727}
@@ -3409,7 +3407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a70a3f92750fe4e8c0dc4b6e8e54c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 3
+  ID: 0
   spellname: Thunder Strike
   spellText: {fileID: 1134466888}
   selectedSpell: {fileID: 1658152847}
@@ -3649,7 +3647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a70a3f92750fe4e8c0dc4b6e8e54c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 4
+  ID: 0
   spellname: Air Sickle
   spellText: {fileID: 1134466888}
   selectedSpell: {fileID: 228657923}
@@ -4056,7 +4054,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1203283225}
-  - component: {fileID: 1203283226}
   m_Layer: 0
   m_Name: Cast
   m_TagString: Untagged
@@ -4079,20 +4076,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 103832611}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.608}
---- !u!114 &1203283226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1203283224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc26abf6f9443c04c8f7045bd3350c49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spellHolder: {fileID: 1203283224}
-  currentSpell: {fileID: 0}
 --- !u!1 &1227024764
 GameObject:
   m_ObjectHideFlags: 0
@@ -4148,7 +4131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a70a3f92750fe4e8c0dc4b6e8e54c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 5
+  ID: 4
   spellname: Landslide
   spellText: {fileID: 520932889}
   selectedSpell: {fileID: 738849578}
@@ -4959,7 +4942,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1826370196}
   - component: {fileID: 1826370198}
-  - component: {fileID: 1826370197}
+  - component: {fileID: 1826370199}
   m_Layer: 5
   m_Name: WeaponWheel1
   m_TagString: Untagged
@@ -4992,23 +4975,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1.75, y: 2.2}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1826370197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1826370195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c3a3c30ad9b7a54ba02e1178c80ba9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 1826370198}
-  weaponWheelOn: 0
-  selectedSpell: {fileID: 0}
-  noImage: {fileID: 0}
-  shoot: {fileID: 103832614}
 --- !u!95 &1826370198
 Animator:
   serializedVersion: 5
@@ -5030,6 +4996,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1826370199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826370195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc26abf6f9443c04c8f7045bd3350c49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spells: []
+  currentSpell: {fileID: 0}
+  selectedSpell: {fileID: 0}
+  noImage: {fileID: 0}
+  anim: {fileID: 1826370198}
+  weaponWheelOn: 0
 --- !u!1 &1848232940
 GameObject:
   m_ObjectHideFlags: 0
@@ -5348,7 +5332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2038879968}
   - component: {fileID: 2038879970}
-  - component: {fileID: 2038879969}
+  - component: {fileID: 2038879971}
   m_Layer: 5
   m_Name: WeaponWheel2
   m_TagString: Untagged
@@ -5381,23 +5365,6 @@ RectTransform:
   m_AnchoredPosition: {x: -1.75, y: 2.24}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2038879969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2038879967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c3a3c30ad9b7a54ba02e1178c80ba9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 2038879970}
-  weaponWheelOn: 0
-  selectedSpell: {fileID: 0}
-  noImage: {fileID: 0}
-  shoot: {fileID: 0}
 --- !u!95 &2038879970
 Animator:
   serializedVersion: 5
@@ -5419,6 +5386,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2038879971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038879967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc26abf6f9443c04c8f7045bd3350c49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spells: []
+  currentSpell: {fileID: 0}
+  selectedSpell: {fileID: 0}
+  noImage: {fileID: 0}
+  anim: {fileID: 2038879970}
+  weaponWheelOn: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

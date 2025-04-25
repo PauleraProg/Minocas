@@ -1,47 +1,69 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponHolder : MonoBehaviour
 {
-    int totalSpell = 1;
+    int totalSpell;
 
     int currentIndex;
 
-    public static GameObject[] spells;
-
-    public GameObject spellHolder;
+    public GameObject[] spells;
 
     public GameObject currentSpell;
 
+    public Image selectedSpell;
+
+    public Sprite noImage;
+
+    public Animator anim;
+
+    public bool weaponWheelOn = false;
+
+    public static int spellID;
+
+
     private void Start()
     {
-        totalSpell = spellHolder.transform.childCount;
+        totalSpell = gameObject.transform.childCount;
         spells = new GameObject[totalSpell];
 
         for (int i = 0; i < totalSpell; i++)
         {
-            spells[i] = spellHolder.transform.GetChild(i).gameObject;
+            spells[i] = gameObject.transform.GetChild(i).gameObject;
             spells[i].SetActive(false);
         }
-        spells[0].SetActive(true);
-        currentSpell = spells[0];
         currentIndex = 0;
     }
 
-    public void Fireball()
+    private void Update()
     {
-            spells[currentIndex].SetActive(false);
-            currentIndex = 0;
-            spells[currentIndex].SetActive(true);        
+        if (Input.GetKeyDown(KeyCode.RightControl))
+        {
+            weaponWheelOn = !weaponWheelOn;
+        }
+
+        if (weaponWheelOn)
+        {
+            anim.SetBool("OpenWeaponWheel", true);
+        }
+        else
+        {
+            anim.SetBool("OpenWeaponWheel", false);
+        }
+
+        switch (spellID)
+        {
+            default:
+                spells[0].SetActive(true);
+                break;
+            case 1:
+                Debug.Log("Ice Clusters!");
+                break;
+        }
     }
 
-    public void IceCluster() 
-    {
-            spells[currentIndex].SetActive(false);
-            currentIndex = 1;
-            spells[currentIndex].SetActive(true);
-    }
 
 
 

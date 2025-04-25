@@ -17,7 +17,6 @@ public class Atirar : MonoBehaviour
 
     private bool endTurn;
     private bool liveSpell;
-    [SerializeField] private WheelController wheelOn;
 
 
     //public Transform offset;
@@ -67,7 +66,7 @@ public class Atirar : MonoBehaviour
 
         if (!Turnos.playerTurn && gameObject.CompareTag("P1"))
         {
-            if (wheelOn.weaponWheelOn && Input.GetKeyDown(KeyCode.RightShift))
+            if (WeaponHolder.spellID == 0 && Input.GetKeyDown(KeyCode.RightShift))
             {
                 p1Shot = true;
                 Movimento.isShooting = true;
