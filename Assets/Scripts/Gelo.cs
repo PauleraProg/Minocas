@@ -17,7 +17,7 @@ public class Gelo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("P2");
+        player = gameObject;
 
         sRplayer = player.GetComponent<SpriteRenderer>();
 
@@ -34,19 +34,33 @@ public class Gelo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Shoot();
-        
+        Shoot();      
     }
 
     void Shoot()
     {
-        if (flipped)
+        if (gameObject.CompareTag("P1"))
         {
-            transform.position += transform.right * speed * Time.deltaTime;
+            if (flipped)
+            {
+                transform.position += -transform.right * speed * Time.deltaTime;
+            }
+            else
+            {
+                transform.position += transform.right * speed * Time.deltaTime;
+            }
         }
-        else
+
+        if (gameObject.CompareTag("P2"))
         {
-            transform.position += -transform.right * speed * Time.deltaTime;
+            if (flipped)
+            {
+                transform.position += transform.right * speed * Time.deltaTime;
+            }
+            else
+            {
+                transform.position += -transform.right * speed * Time.deltaTime;
+            }
         }
     }
 

@@ -5,8 +5,7 @@ using UnityEngine.UIElements;
 
 public class Atirar : MonoBehaviour
 {
-    public GameObject fireballPrefab;
-    public GameObject lghtPrefab;
+    public GameObject spellPrefab;
 
     public static float xAxis;
     public static float xAxis2;
@@ -15,9 +14,6 @@ public class Atirar : MonoBehaviour
     static public bool p1Shot;
     static public bool p2Shot;
 
-    private bool endTurn;
-    private bool liveSpell;
-
 
     //public Transform offset;
 
@@ -25,7 +21,6 @@ public class Atirar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        liveSpell = false;
         p1Shot = false;
         p2Shot = false;
         srCast = GetComponent<SpriteRenderer>();
@@ -37,7 +32,6 @@ public class Atirar : MonoBehaviour
         
         Bola();
 
-        liveSpell = GameObject.FindGameObjectWithTag("Spell");
     }
 
     
@@ -66,54 +60,41 @@ public class Atirar : MonoBehaviour
 
         if (!Turnos.playerTurn && gameObject.CompareTag("P1"))
         {
-            if (WeaponHolder.spellID == 0 && Input.GetKeyDown(KeyCode.RightShift))
+            if (!p1Shot && Input.GetKeyDown(KeyCode.RightShift))
             {
                 p1Shot = true;
                 Movimento.isShooting = true;
                 if (srCast.flipX)
                 {
                     Vector2 offset = new Vector2(transform.position.x + -2, transform.position.y + 2.5f);
-                    Instantiate(fireballPrefab, offset, Quaternion.identity);
+                    Instantiate(spellPrefab, offset, Quaternion.identity);
                 }
                 else
                 {
                     Vector2 offset = new Vector2(transform.position.x + 2, transform.position.y + 2.5f);
-                    Instantiate(fireballPrefab, offset, Quaternion.identity);
+                    Instantiate(spellPrefab, offset, Quaternion.identity);
                 }
             }           
         }
         else if (Turnos.playerTurn && gameObject.CompareTag("P2"))
         {
-            if (!p2Shot && Input.GetKeyDown(KeyCode.LeftControl))
+            if (!p2Shot && Input.GetKeyDown(KeyCode.LeftShift))
             {
                 p2Shot = true;                
                 Movimento.isShooting = true;
                 if(!srCast.flipX)
                 {
                     Vector2 offset = new Vector2(transform.position.x + -2, transform.position.y + 2.5f);
-                    Instantiate(fireballPrefab, offset, Quaternion.identity);
+                    Instantiate(spellPrefab, offset, Quaternion.identity);
                 }
                 else
                 {
                     Vector2 offset = new Vector2(transform.position.x + 2, transform.position.y + 2.5f);
-                    Instantiate(fireballPrefab, offset, Quaternion.identity);
+                    Instantiate(spellPrefab, offset, Quaternion.identity);
                 }
             }
         }
-
-        void Relampago()
-        {
-            if (!Turnos.playerTurn && gameObject.CompareTag("P1"))
-            {
-                if (!p1Shot && Input.GetKeyDown(KeyCode.LeftShift))
-                {
-                    p1Shot = true;
-                    Movimento.isShooting = true;
-
-                    
-                }
-            }
-        }
+       
     }
 
 

@@ -13,12 +13,12 @@ public class Fogo : MonoBehaviour
 
     public bool flipped;
 
-    private GameObject player;
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
         
-        player = GameObject.FindGameObjectWithTag("P1");
+        player = gameObject;
 
         sRplayer = player.GetComponent<SpriteRenderer>();
 

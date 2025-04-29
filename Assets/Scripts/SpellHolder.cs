@@ -17,10 +17,6 @@ public class WeaponHolder : MonoBehaviour
 
     public Sprite noImage;
 
-    public Animator anim;
-
-    public bool weaponWheelOn = false;
-
     public static int spellID;
 
 
@@ -34,38 +30,28 @@ public class WeaponHolder : MonoBehaviour
             spells[i] = gameObject.transform.GetChild(i).gameObject;
             spells[i].SetActive(false);
         }
+        spells[0].SetActive(true);
+        currentSpell = spells[0];
         currentIndex = 0;
     }
 
     private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.RightControl))
-        {
-            weaponWheelOn = !weaponWheelOn;
-        }
-
-        if (weaponWheelOn)
-        {
-            anim.SetBool("OpenWeaponWheel", true);
-        }
-        else
-        {
-            anim.SetBool("OpenWeaponWheel", false);
-        }
-
-        switch (spellID)
-        {
-            default:
-                spells[0].SetActive(true);
-                break;
-            case 1:
-                Debug.Log("Ice Clusters!");
-                break;
-        }
+    {       
+        
     }
 
+    public void Fireball()
+    {
+        spells[currentIndex].SetActive(false);
+        currentIndex = spellID;
+        spells[currentIndex].SetActive(true);
+    }
 
-
-
+    public void IceCluster()
+    {
+        spells[currentIndex].SetActive(false);
+        currentIndex = spellID;
+        spells[currentIndex].SetActive(true);
+    }
 }
 
