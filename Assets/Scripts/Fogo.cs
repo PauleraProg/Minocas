@@ -5,7 +5,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Fogo : MonoBehaviour
 {
-    public float speed = 20f;
+    static public float speed = 20f;
 
     static public int dano = 15;
 
@@ -18,8 +18,7 @@ public class Fogo : MonoBehaviour
     void Start()
     {
         
-        player = gameObject;
-
+        
         sRplayer = player.GetComponent<SpriteRenderer>();
 
         if (sRplayer.flipX)

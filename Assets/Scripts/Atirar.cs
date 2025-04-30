@@ -64,16 +64,10 @@ public class Atirar : MonoBehaviour
             {
                 p1Shot = true;
                 Movimento.isShooting = true;
-                if (srCast.flipX)
-                {
-                    Vector2 offset = new Vector2(transform.position.x + -2, transform.position.y + 2.5f);
-                    Instantiate(spellPrefab, offset, Quaternion.identity);
-                }
-                else
-                {
-                    Vector2 offset = new Vector2(transform.position.x + 2, transform.position.y + 2.5f);
-                    Instantiate(spellPrefab, offset, Quaternion.identity);
-                }
+
+                Instantiate(spellPrefab, offset, Quaternion.identity);
+                spellPrefab.GetComponent<RigidBody2D>().velocity = transform.right * Fogo.speed;
+                
             }           
         }
         else if (Turnos.playerTurn && gameObject.CompareTag("P2"))
