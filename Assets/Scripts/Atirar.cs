@@ -15,12 +15,17 @@ public class Atirar : MonoBehaviour
     static public bool p2Shot;
 
 
-    //public Transform offset;
+    public Transform offset;
+    Rigidbody2D rb;
+    LineRenderer lr;
 
+    Vector2 dragStart;
     
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        lr = GetComponent<LineRenderer>();
         p1Shot = false;
         p2Shot = false;
         srCast = GetComponent<SpriteRenderer>();
@@ -60,15 +65,28 @@ public class Atirar : MonoBehaviour
 
         if (!Turnos.playerTurn && gameObject.CompareTag("P1"))
         {
-            if (!p1Shot && Input.GetKeyDown(KeyCode.RightShift))
+            if (!p1Shot && Input.GetMouseButtonDown(0))
             {
                 p1Shot = true;
                 Movimento.isShooting = true;
 
-                Instantiate(spellPrefab, offset, Quaternion.identity);
-                spellPrefab.GetComponent<RigidBody2D>().velocity = transform.right * Fogo.speed;
+                dragStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                
                 
             }           
+
+            if (!p1Shot && Input.GetMouseButton(0))
+            {
+
+            }
+
+            if (!p1Shot && Input.GetMouseButtonDown(0)) 
+            {
+                Vector2 dragEnd = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 Svelocity = (dragEnd - dragStart) * Fogo.speed;
+
+                rb.velocity = Svelocity;
+            }
         }
         else if (Turnos.playerTurn && gameObject.CompareTag("P2"))
         {
@@ -91,5 +109,12 @@ public class Atirar : MonoBehaviour
        
     }
 
+    public Vector2[] Plot(Rigidbody rigidbody, Vector2 pos, Vector2 Avelocity, int steps)
+    {
+        Vector2[] results = new Vector2[steps];
+
+        float timestep = Time.fixedDeltaTime / Physics2D.velocityIterations;
+        Vector2 acel = Physics2D.gravity * rigidbody.gravityScale* timestep * timestep;
+    }
 
 }
