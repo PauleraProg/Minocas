@@ -15,12 +15,17 @@ public class Atirar : MonoBehaviour
     static public bool p2Shot;
 
 
-    //public Transform offset;
+    public Transform offset;
+    Rigidbody2D rb;
+    LineRenderer lr;
 
+    Vector2 dragStart;
     
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        lr = GetComponent<LineRenderer>();
         p1Shot = false;
         p2Shot = false;
         srCast = GetComponent<SpriteRenderer>();
@@ -60,21 +65,29 @@ public class Atirar : MonoBehaviour
 
         if (!Turnos.playerTurn && gameObject.CompareTag("P1"))
         {
-            if (!p1Shot && Input.GetKeyDown(KeyCode.RightShift))
+            if (!p1Shot && Input.GetKey(KeyCode.RightShift))
             {
                 p1Shot = true;
                 Movimento.isShooting = true;
-                if (srCast.flipX)
-                {
-                    Vector2 offset = new Vector2(transform.position.x + -2, transform.position.y + 2.5f);
-                    Instantiate(spellPrefab, offset, Quaternion.identity);
-                }
-                else
+
+                if (!srCast.flipX)
                 {
                     Vector2 offset = new Vector2(transform.position.x + 2, transform.position.y + 2.5f);
                     Instantiate(spellPrefab, offset, Quaternion.identity);
                 }
             }           
+
+            if (!p1Shot && Input.GetKey(KeyCode.RightShift))
+            {
+                p1Shot = true;
+                Movimento.isShooting = true;
+
+                if (!srCast.flipX)
+                {
+                    Vector2 offset = new Vector2(transform.position.x + -2, transform.position.y + 2.5f);
+                    Instantiate(spellPrefab, offset, Quaternion.identity);
+                }
+            }
         }
         else if (Turnos.playerTurn && gameObject.CompareTag("P2"))
         {
@@ -96,6 +109,5 @@ public class Atirar : MonoBehaviour
         }
        
     }
-
 
 }

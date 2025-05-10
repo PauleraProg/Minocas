@@ -5,24 +5,20 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Fogo : MonoBehaviour
 {
-    public float speed = 20f;
+    static public float speed = 20f;
 
     static public int dano = 15;
 
-    private SpriteRenderer sRplayer;
-
     public bool flipped;
 
-    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
         
-        player = gameObject;
+        
+        
 
-        sRplayer = player.GetComponent<SpriteRenderer>();
-
-        if (sRplayer.flipX)
+        if (Movimento.sRplayer.flipX)
         {
             flipped = true;
         }
