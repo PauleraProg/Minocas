@@ -9,19 +9,16 @@ public class Fogo : MonoBehaviour
 
     static public int dano = 15;
 
-    private SpriteRenderer sRplayer;
-
     public bool flipped;
 
-    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
         
         
-        sRplayer = player.GetComponent<SpriteRenderer>();
+        
 
-        if (sRplayer.flipX)
+        if (Movimento.sRplayer.flipX)
         {
             flipped = true;
         }

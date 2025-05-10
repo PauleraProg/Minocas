@@ -65,27 +65,28 @@ public class Atirar : MonoBehaviour
 
         if (!Turnos.playerTurn && gameObject.CompareTag("P1"))
         {
-            if (!p1Shot && Input.GetMouseButtonDown(0))
+            if (!p1Shot && Input.GetKey(KeyCode.RightShift))
             {
                 p1Shot = true;
                 Movimento.isShooting = true;
 
-                dragStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                
-                
+                if (!srCast.flipX)
+                {
+                    Vector2 offset = new Vector2(transform.position.x + 2, transform.position.y + 2.5f);
+                    Instantiate(spellPrefab, offset, Quaternion.identity);
+                }
             }           
 
-            if (!p1Shot && Input.GetMouseButton(0))
+            if (!p1Shot && Input.GetKey(KeyCode.RightShift))
             {
+                p1Shot = true;
+                Movimento.isShooting = true;
 
-            }
-
-            if (!p1Shot && Input.GetMouseButtonDown(0)) 
-            {
-                Vector2 dragEnd = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Vector2 Svelocity = (dragEnd - dragStart) * Fogo.speed;
-
-                rb.velocity = Svelocity;
+                if (!srCast.flipX)
+                {
+                    Vector2 offset = new Vector2(transform.position.x + -2, transform.position.y + 2.5f);
+                    Instantiate(spellPrefab, offset, Quaternion.identity);
+                }
             }
         }
         else if (Turnos.playerTurn && gameObject.CompareTag("P2"))
@@ -107,14 +108,6 @@ public class Atirar : MonoBehaviour
             }
         }
        
-    }
-
-    public Vector2[] Plot(Rigidbody rigidbody, Vector2 pos, Vector2 Avelocity, int steps)
-    {
-        Vector2[] results = new Vector2[steps];
-
-        float timestep = Time.fixedDeltaTime / Physics2D.velocityIterations;
-        Vector2 acel = Physics2D.gravity * rigidbody.gravityScale* timestep * timestep;
     }
 
 }

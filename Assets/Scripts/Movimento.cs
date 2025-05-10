@@ -22,9 +22,13 @@ public class Movimento : MonoBehaviour
 
     static public bool isShooting;
 
+    public static SpriteRenderer sRplayer;
+
     // Start is called before the first frame update
     void Start()
     {
+        sRplayer = gameObject.GetComponent<SpriteRenderer>();
+
         isShooting = false;
         rB = GetComponent<Rigidbody2D>();
         sR = GetComponent<SpriteRenderer>();
