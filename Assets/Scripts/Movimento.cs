@@ -9,8 +9,6 @@ public class Movimento : MonoBehaviour
 
     public float jump = 3;
 
-    static public int vida = 100;
-
     private Rigidbody2D rB;
 
     private SpriteRenderer sR;
@@ -37,10 +35,6 @@ public class Movimento : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (vida <= 0)
-        {
-            Destroy(gameObject);
-        }
         Movement();     
     }
 
