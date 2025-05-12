@@ -101,21 +101,6 @@ public class Movimento : MonoBehaviour
             }
         }
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Spell"))
-        {
-            vida -= Fogo.dano;
-        }
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Spell"))
-        {
-            vida -= Raio.dano;
-        }
-    }
 }
 
 

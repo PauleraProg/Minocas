@@ -9,46 +9,25 @@ public class Fogo : MonoBehaviour
 
     static public int dano = 15;
 
-    public bool flipped;
-
     // Start is called before the first frame update
     void Start()
     {
-        
-        
-        
 
-        if (Movimento.sRplayer.flipX)
-        {
-            flipped = true;
-        }
-        else
-        {
-            flipped = false;
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        Shoot();
-    }
 
-    void Shoot()
-    {
-        if (flipped)
-        {
-            transform.position += -transform.right * speed * Time.deltaTime;
-        }
-        else
-        {
-            transform.position += transform.right * speed * Time.deltaTime;
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Turnos.turno += 1;
-        Destroy(gameObject);
+        Destroy(gameObject);      
+    }
+
+    private void OnDestroy()
+    {
+        Turnos.turno++;
     }
 }

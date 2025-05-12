@@ -5,27 +5,21 @@ using UnityEngine;
 
 public class Turnos : MonoBehaviour
 {
-    static public int turno = 1;
+    static public int turno;
     static public bool playerTurn;
-    private bool action;
-
 
     // Start is called before the first frame update
     void Start()
     {
+        turno = 1;
         playerTurn = false;
     }
 
     // Update is called once per frame
     void Update()
-    {           
-        BulletCheck();
-        if (action)
-        {
-            Action();
-        }
+    {
         OpenFire();
-            ManageTurn(turno);        
+        ManageTurn(turno);        
     }
 
     static public bool ManageTurn(int turn)
@@ -34,23 +28,13 @@ public class Turnos : MonoBehaviour
         {
             playerTurn = true;
         }
-        else
+        else if (turn % 2 != 0)
         {
             playerTurn = false;
         }
 
         return playerTurn;
     } 
-
-    void Action()
-    {           
-            Debug.Log(turno);
-    }
-
-    void BulletCheck()
-    {
-        action = GameObject.FindGameObjectWithTag("Spell");
-    }
 
     void OpenFire()
     {

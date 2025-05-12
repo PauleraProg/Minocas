@@ -12,18 +12,46 @@ public class WheelAnim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightControl))
+        WheelControl();
+    }
+
+    public void ClickClose()
+    {
+        weaponWheelOn = false;
+    }
+
+    void WheelControl()
+    {
+        if (!Turnos.playerTurn && Input.GetKeyDown(KeyCode.LeftControl))
         {
+          
             weaponWheelOn = !weaponWheelOn;
+            
+
+            if (weaponWheelOn)
+            {
+                anim.SetBool("OpenWeaponWheel", true);
+            }
+            else
+            {
+                anim.SetBool("OpenWeaponWheel", false);
+            }
         }
 
-        if (weaponWheelOn)
+        if (Turnos.playerTurn && Input.GetKeyDown(KeyCode.RightControl))
         {
-            anim.SetBool("OpenWeaponWheel", true);
-        }
-        else
-        {
-            anim.SetBool("OpenWeaponWheel", false);
+            
+            weaponWheelOn = !weaponWheelOn;
+            
+
+            if (weaponWheelOn)
+            {
+                anim.SetBool("OpenWeaponWheel", true);
+            }
+            else
+            {
+                anim.SetBool("OpenWeaponWheel", false);
+            }
         }
     }
 }

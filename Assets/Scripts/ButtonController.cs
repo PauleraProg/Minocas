@@ -12,7 +12,6 @@ public class ButtonController : MonoBehaviour
     public TextMeshProUGUI spellText;
     public Image selectedSpell;
     private bool selected = false;
-    public Sprite icon;
 
 
     // Start is called before the first frame update
@@ -26,7 +25,6 @@ public class ButtonController : MonoBehaviour
     {
         if (selected)
         {
-            selectedSpell.sprite = icon;
             spellText.text = spellname;
         }
     }

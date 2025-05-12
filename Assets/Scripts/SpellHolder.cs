@@ -19,6 +19,8 @@ public class WeaponHolder : MonoBehaviour
 
     public static int spellID;
 
+    [SerializeField] private GameObject[] casts;
+
 
     private void Start()
     {
@@ -36,8 +38,8 @@ public class WeaponHolder : MonoBehaviour
     }
 
     private void Update()
-    {       
-        
+    {
+        Switching();
     }
 
     public void Fireball()
@@ -52,6 +54,34 @@ public class WeaponHolder : MonoBehaviour
         spells[currentIndex].SetActive(false);
         currentIndex = spellID;
         spells[currentIndex].SetActive(true);
+    }
+
+    public void LandSlide()
+    {
+        spells[currentIndex].SetActive(false);
+        currentIndex = spellID;
+        spells[currentIndex].SetActive(true);
+    }
+
+    public void ThunderStrike()
+    {
+        spells[currentIndex].SetActive(false);
+        currentIndex = spellID;
+        spells[currentIndex].SetActive(true);
+    }
+
+    public void Switching()
+    {
+        if (!Turnos.playerTurn)
+        {
+            casts[0].SetActive(true);
+            casts[1].SetActive(false);
+        }
+        else if (Turnos.playerTurn)
+        {
+            casts[0].SetActive(false);
+            casts[1].SetActive(true);
+        }
     }
 }
 

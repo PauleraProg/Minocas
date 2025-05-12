@@ -6,108 +6,93 @@ using UnityEngine.UIElements;
 public class Atirar : MonoBehaviour
 {
     public GameObject spellPrefab;
-
-    public static float xAxis;
-    public static float xAxis2;
-    public static SpriteRenderer srCast;
-
     static public bool p1Shot;
     static public bool p2Shot;
+    public float forceSpeed;
+    private float currentForce;
+    [SerializeField] private float minForce;
+    [SerializeField] private float addForce;
+    [SerializeField]private float maxForce;
+    [SerializeField]private LineRenderer lineRenderer;
+    [SerializeField]private Transform offset;
+    [SerializeField] private int trajectorySteps;
+    [SerializeField] private float timeStep;    
 
-
-    public Transform offset;
-    Rigidbody2D rb;
-    LineRenderer lr;
-
-    Vector2 dragStart;
-    
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        lr = GetComponent<LineRenderer>();
         p1Shot = false;
         p2Shot = false;
-        srCast = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        Bola();
+        float input = Input.GetAxis("Vertical");
+        currentForce += input * forceSpeed * Time.deltaTime;
+        currentForce = Mathf.Clamp(currentForce, minForce, maxForce);
 
+        ShowTrajectory();
+        if (!Turnos.playerTurn && Input.GetKeyDown(KeyCode.LeftShift))
+        {            
+             Bolas();
+            Debug.Log(Turnos.turno);
+        }
+
+        if (Turnos.playerTurn && Input.GetKeyDown(KeyCode.RightShift))
+        {
+            Bolas();
+            Debug.Log(Turnos.turno);
+        }
     }
 
-    
-    public void Bola()
+    public void ShowTrajectory()
     {
-        xAxis = Input.GetAxis("P1");
-        xAxis2 = Input.GetAxis("P2");
 
-        if (xAxis < 0)
+        Vector2 dire = new Vector2(0, 0);
+        if (gameObject.CompareTag("P1"))
         {
-            srCast.flipX = true;
+            dire = offset.right.normalized;
         }
-        else if (xAxis > 0)
+        else if (gameObject.CompareTag("P2"))
         {
-            srCast.flipX = false;
+            dire = -offset.right.normalized;
         }
+        Vector2 startVel = dire * currentForce;
+        Vector2 startPos = offset.position;
 
-        if (xAxis2 > 0)
-        {
-            srCast.flipX = true;
-        }
-        else if (xAxis2 < 0)
-        {
-            srCast.flipX = false;
-        }
+        lineRenderer.positionCount = trajectorySteps;
 
-        if (!Turnos.playerTurn && gameObject.CompareTag("P1"))
-        {
-            if (!p1Shot && Input.GetKey(KeyCode.RightShift))
-            {
-                p1Shot = true;
-                Movimento.isShooting = true;
+        for (int i = 0; i < trajectorySteps; i++)
+        {            
+                float t = i * timeStep;
 
-                if (!srCast.flipX)
-                {
-                    Vector2 offset = new Vector2(transform.position.x + 2, transform.position.y + 2.5f);
-                    Instantiate(spellPrefab, offset, Quaternion.identity);
-                }
-            }           
+            Vector2 pos = startPos + startVel * t + 0.5f * Physics2D.gravity * t * t;
 
-            if (!p1Shot && Input.GetKey(KeyCode.RightShift))
-            {
-                p1Shot = true;
-                Movimento.isShooting = true;
-
-                if (!srCast.flipX)
-                {
-                    Vector2 offset = new Vector2(transform.position.x + -2, transform.position.y + 2.5f);
-                    Instantiate(spellPrefab, offset, Quaternion.identity);
-                }
-            }
+            lineRenderer.SetPosition(i, pos);
         }
-        else if (Turnos.playerTurn && gameObject.CompareTag("P2"))
-        {
-            if (!p2Shot && Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                p2Shot = true;                
-                Movimento.isShooting = true;
-                if(!srCast.flipX)
-                {
-                    Vector2 offset = new Vector2(transform.position.x + -2, transform.position.y + 2.5f);
-                    Instantiate(spellPrefab, offset, Quaternion.identity);
-                }
-                else
-                {
-                    Vector2 offset = new Vector2(transform.position.x + 2, transform.position.y + 2.5f);
-                    Instantiate(spellPrefab, offset, Quaternion.identity);
-                }
-            }
-        }
-       
     }
 
+    public void Bolas()
+    {
+        GameObject ball = Instantiate(spellPrefab, offset.position, Quaternion.identity);
+
+        Rigidbody2D rb = ball.GetComponent<Rigidbody2D>();
+
+        if (rb != null)
+        {
+            Vector2 flado = new Vector2 (0,0);
+            if (gameObject.CompareTag("P1"))
+            {
+                flado = offset.right.normalized * currentForce;
+            }
+            else if (gameObject.CompareTag("P2"))
+            {
+                flado = -offset.right.normalized * currentForce;
+            }
+                rb.AddForce(flado, ForceMode2D.Impulse);
+
+        }
+
+    }
 }
