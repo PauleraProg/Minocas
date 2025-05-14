@@ -27,4 +27,9 @@ public class MenuButton : MonoBehaviour
         Application.Quit();
         Debug.Log("is quitting");
     }
+
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene("StartScreen");
+    }
 }

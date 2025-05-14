@@ -18,6 +18,7 @@ public class WheelAnim : MonoBehaviour
     public void ClickClose()
     {
         weaponWheelOn = false;
+        Debug.Log("is closing");
     }
 
     void WheelControl()

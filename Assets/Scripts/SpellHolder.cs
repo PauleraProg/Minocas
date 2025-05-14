@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class WeaponHolder : MonoBehaviour
 {
-    int totalSpell;
+    int totalSpells;
+    int totalIcons;
 
     int currentIndex;
 
     public GameObject[] spells;
+    public Image[] icons; 
 
     public GameObject currentSpell;
 
@@ -22,12 +24,13 @@ public class WeaponHolder : MonoBehaviour
     [SerializeField] private GameObject[] casts;
 
 
+
     private void Start()
     {
-        totalSpell = gameObject.transform.childCount;
-        spells = new GameObject[totalSpell];
+        totalSpells = gameObject.transform.childCount;
+        spells = new GameObject[totalSpells];
 
-        for (int i = 0; i < totalSpell; i++)
+        for (int i = 0; i < totalSpells; i++)
         {
             spells[i] = gameObject.transform.GetChild(i).gameObject;
             spells[i].SetActive(false);
@@ -47,6 +50,8 @@ public class WeaponHolder : MonoBehaviour
         spells[currentIndex].SetActive(false);
         currentIndex = spellID;
         spells[currentIndex].SetActive(true);
+
+        Debug.Log("is selecting");
     }
 
     public void IceCluster()

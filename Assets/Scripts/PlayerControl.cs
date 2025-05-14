@@ -5,37 +5,35 @@ using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
-    static public int health = 100;
+    public int vidaP1 = 100;
+    public int vidaP2 = 100;
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(health);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (health <= 0)
+        if (vidaP1 <= 0 || vidaP2 <= 0)
         {
             Destroy(gameObject);
             SceneManager.LoadScene("EndScreen");
         }
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
-            health = 0;
+            vidaP1 -= 1;
         }
 
-        else if (gameObject.CompareTag("Spell"))
+        if (collision.gameObject.CompareTag("Spell"))
         {
-            health -= Fogo.dano;
+            vidaP1 -= 1;
         }
-
-        Debug.Log(health);
     }
 
 }

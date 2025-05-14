@@ -30,11 +30,11 @@ public class CameraControl : MonoBehaviour
     {
         if (!Turnos.playerTurn)
         {
-            gameObject.transform.position = new Vector3(1, 12.8f,-10);
+            gameObject.transform.position = new Vector3(1, 16.2f,-10);
         }
         else
         {
-            gameObject.transform.position = new Vector3(45, 12.8f,-10);
+            gameObject.transform.position = new Vector3(45, 16.2f,-10);
         }
     }
 
