@@ -6,12 +6,10 @@ using UnityEngine.UI;
 public class WeaponHolder : MonoBehaviour
 {
     int totalSpells;
-    int totalIcons;
 
     int currentIndex;
 
     public GameObject[] spells;
-    public Image[] icons; 
 
     public GameObject currentSpell;
 
@@ -43,6 +41,7 @@ public class WeaponHolder : MonoBehaviour
     private void Update()
     {
         Switching();
+        NewEquip();
     }
 
     public void Fireball()
@@ -88,5 +87,71 @@ public class WeaponHolder : MonoBehaviour
             casts[1].SetActive(true);
         }
     }
+
+    public void NewEquip()
+    {
+        if (gameObject.CompareTag("P1"))
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                spells[currentIndex].gameObject.SetActive(false);
+                currentIndex++;
+                spells[currentIndex].gameObject.SetActive(true);
+
+                if (currentIndex >= spells.Length && Input.GetKeyDown(KeyCode.E))
+                {
+                    spells[currentIndex].gameObject.SetActive(false);
+                    currentIndex = 0;
+                    spells[currentIndex].gameObject.SetActive(true);
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                spells[currentIndex].gameObject.SetActive(false);
+                currentIndex--;
+                spells[currentIndex].gameObject.SetActive(true);
+
+                if (currentIndex <= spells.Length && Input.GetKeyDown(KeyCode.Q))
+                {
+                    spells[currentIndex].gameObject.SetActive(false);
+                    currentIndex = 0;
+                    spells[currentIndex].gameObject.SetActive(true);
+                }
+            }
+        }
+
+        if (gameObject.CompareTag("P2"))
+        {
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                spells[currentIndex].gameObject.SetActive(false);
+                currentIndex++;
+                spells[currentIndex].gameObject.SetActive(true);
+
+                if (currentIndex >= spells.Length && Input.GetKeyDown(KeyCode.E))
+                {
+                    spells[currentIndex].gameObject.SetActive(false);
+                    currentIndex = 0;
+                    spells[currentIndex].gameObject.SetActive(true);
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                spells[currentIndex].gameObject.SetActive(false);
+                currentIndex--;
+                spells[currentIndex].gameObject.SetActive(true);
+
+                if (currentIndex <= spells.Length && Input.GetKeyDown(KeyCode.Q))
+                {
+                    spells[currentIndex].gameObject.SetActive(false);
+                    currentIndex = 0;
+                    spells[currentIndex].gameObject.SetActive(true);
+                }
+            }
+        }
+    }
 }
+
 
